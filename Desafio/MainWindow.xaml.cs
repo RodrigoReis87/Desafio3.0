@@ -92,13 +92,20 @@ namespace Desafio
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void BtnSincronizar_Click(object sender, RoutedEventArgs e)
         {
             var obj = JsonConvert.DeserializeObject<PedidoCompleto>(json);
 
 			var pedidoVM = new PedidoVM();
 
 			pedidoVM.ConverterToVM(obj);
+
+			MessageBox.Show("Pedidos sincronizados com sucesso!");
         }
-    }
+
+		private void BtnSair_Click(object sender, RoutedEventArgs e)
+		{
+			this.Close();
+		}
+	}
 }

@@ -129,5 +129,16 @@ namespace Desafio.ViewModels
                 OnPropertyChanged(nameof(Endereco));
             }
         }
+
+        private ObservableCollection<ItemVM> _items;
+        public ObservableCollection<ItemVM> Itens
+        {
+            get { return _items; }
+            set
+            {
+                _items = value;
+                OnPropertyChanged(nameof(Itens));
+            }
+        }
     }
 }

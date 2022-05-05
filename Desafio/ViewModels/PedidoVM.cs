@@ -11,7 +11,7 @@ namespace Desafio.ViewModels
 {
     public class PedidoVM
     {
-        public PedidoVM() { }
+        //public PedidoVM() { }
 
         public string Id { get; set; }
         public int Numero { get; set; }
@@ -65,18 +65,42 @@ namespace Desafio.ViewModels
                     Referencia = objeto.EnderecoEntrega.Referencia
                 };
 
-                //objeto.Itens = new List<Item>();
-                    foreach(var item in objeto.Itens)
+                //objeto.Itens = new ObservableCollection<Item>();
+                foreach (var item in objeto.Itens)
+                {
+                    var prod = new ItemVM(item)
                     {
-                    objeto.Itens.Add(new Item()
+                        Id = item.Id,
+                        IdProduto = item.Idproduto,
+                        Nome = item.Nome,
+                        Quantidade = item.Quantidade,
+                        ValorUnitario = item.ValorUnitario
+                    };
+                    prod.ConverterToVM(prod);
+                    //objeto.Itens.Add(new Item()
+                    //{
+                    //    Id = objeto.Itens.First().Id,
+                    //    Idproduto = objeto.Itens.First().Idproduto,
+                    //    Nome = objeto.Itens.First().Nome,
+                    //    Quantidade = objeto.Itens.First().Quantidade,
+                    //    ValorUnitario = objeto.Itens.First().ValorUnitario
+                    //});
+                    //objeto.Itens.ToArray();
+                };
+
+                foreach(var item in objeto.pagamento)
+                {
+                    var pag = new PagamentoVM(item)
                     {
-                        Id = objeto.Itens.First().Id,
-                        Idproduto = objeto.Itens.First().Idproduto,
-                        Nome = objeto.Itens.First().Nome,
-                        Quantidade = objeto.Itens.First().Quantidade,
-                        ValorUnitario = objeto.Itens.First().ValorUnitario
-                    });
-                    };                
+                        Id = item.Id,
+                        Parcela = item.Parcela,
+                        Codigo = item.Codigo,
+                        Valor = item.Valor,
+                        Nome = item.Nome
+                    };
+                    pag.ConverterToVM(pag);
+                }
+                
             }
             catch (Exception)
             {

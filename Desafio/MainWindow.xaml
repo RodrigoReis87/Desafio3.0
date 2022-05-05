@@ -5,10 +5,87 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Desafio"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Button Click="Button_Click">
-            <Label>Clique</Label>
-        </Button>
+        Title="MainWindow" Height="600" Width="1024" WindowStartupLocation="CenterScreen" WindowState="Normal" WindowStyle="None">
+    <Grid Background="#100040">
+        <Grid Margin="10,10,10,10" Background="#000040">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="700"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition />
+                    <RowDefinition Height="60"/>
+                </Grid.RowDefinitions>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="7*"/>
+                        <ColumnDefinition Width="13*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Content="Desafio STi3" FontSize="30" Foreground="WhiteSmoke"/>
+                </Grid>
+
+                <Grid Grid.Row="1">
+
+                    <DataGrid Name="DtPedidos" AutoGenerateColumns="False"
+                              CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False"
+                              Background="LightGray" Margin="10" ColumnHeaderStyle="{StaticResource DgHeaderPrincipal}" 
+                              ItemsSource="{Binding PedidosAdicionados}">
+
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Width="70" Binding="{Binding numero}" Header="NUMERO" IsReadOnly="True"/>
+                            <DataGridTextColumn Width="110" Binding="{Binding dataCriacao, StringFormat={}{0:dd/MM/yyyy}}" Header="DATA" IsReadOnly="True"/>
+                            <DataGridTextColumn Width="300" Binding="{Binding clientes.nome}" Header="CLIENTE" IsReadOnly="True"/>
+                            <DataGridTextColumn Width="80" Binding="{Binding status}" Header="STATUS" IsReadOnly="True"/>
+                            <DataGridTextColumn Width="*" Binding="{Binding valorTotal, ConverterCulture=pt-BR,StringFormat=#\,##0.00}" Header="VALOR TOTAL" IsReadOnly="True"/>
+                        </DataGrid.Columns>
+
+                        <DataGrid.Effect>
+                            <DropShadowEffect/>
+                        </DataGrid.Effect>
+                    </DataGrid>
+                </Grid>
+
+                <Grid Grid.Row="2">
+                                       
+                </Grid>
+            </Grid>
+
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="60"/>
+                </Grid.RowDefinitions>
+                
+                <Button x:Name="BtnSincronizar" Content="Sincronizar" Foreground="WhiteSmoke" FontFamily="Rockwell" 
+                                Background="#FF4000" HorizontalAlignment="Right"
+                                Height="25" Width="100" Margin="0,0,10,0" Tag="{Binding}"
+                                Style="{StaticResource BtnPrincipal}" Click="BtnSincronizar_Click">
+                </Button>
+
+
+                <DataGrid Name="DtDetalhes" Grid.Row="1" Background="LightGray" Margin="10">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Width="*" Binding="{Binding}" 
+                                            Header="Detalhes do Pedido" HeaderStyle="{StaticResource DgHeader}">
+
+                        </DataGridTextColumn>
+                    </DataGrid.Columns>
+                    <DataGrid.Effect>
+                        <DropShadowEffect/>
+                    </DataGrid.Effect>
+                </DataGrid>
+
+                <Button x:Name="BtnSair" Grid.Row="2" Content="Sair" Foreground="WhiteSmoke" FontFamily="Rockwell" 
+                                Background="#FF4000"
+                                Height="25" Width="100" Margin="170,0,10,0" Tag="{Binding}"
+                                Style="{StaticResource BtnPrincipal}" Click="BtnSair_Click">
+                </Button>
+            </Grid>
+        </Grid>
+
     </Grid>
 </Window>

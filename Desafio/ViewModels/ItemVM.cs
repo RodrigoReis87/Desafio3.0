@@ -1,14 +1,26 @@
-﻿using System;
+﻿using Desafio.Models;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Desafio.Models.PedidoCompleto;
 
 namespace Desafio.ViewModels
 {
     public class ItemVM : PropertyChange
     {
+        public ItemVM(ItemVM prod)
+        {
+            ConverterToVM(prod);
+        }
+
+        public ItemVM(Item item)
+        {
+            this.item = item;
+        }
+
         private string _id;
         public string Id
         {
@@ -54,6 +66,8 @@ namespace Desafio.ViewModels
         }
 
         private double _valorUnitario;
+        private Item item;
+
         public double ValorUnitario
         {
             get => _valorUnitario;
@@ -61,6 +75,25 @@ namespace Desafio.ViewModels
             {
                 _valorUnitario = value;
                 OnPropertyChanged(nameof(ValorUnitario));
+            }
+        }
+
+        public void ConverterToVM(ItemVM objeto)
+        {
+            try
+            {
+                if(objeto != null)
+                {
+                    Id = objeto.Id;
+                    IdProduto = objeto.IdProduto;
+                    Nome = objeto.Nome;
+                    Quantidade = objeto.Quantidade;
+                    ValorUnitario = objeto.ValorUnitario;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
             }
         }
     }

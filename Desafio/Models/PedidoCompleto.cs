@@ -1,6 +1,7 @@
 ﻿using Desafio.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,13 +25,13 @@ namespace Desafio.Models
             public double Valortotal { get; set; }
             public Cliente Cliente { get; set; }
             public EnderecoEntrega EnderecoEntrega { get; set; }
-            public List<Item> Itens { get; set; }
-            //public List<Pagamento> pagamento { get; set; }
-      
+            public Item[] Itens { get; set; }
+            public Pagamento[] pagamento { get; set; }
+
         #endregion
 
         #region Métodos
-        
+
         #endregion
     }
 }

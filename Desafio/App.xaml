@@ -4,6 +4,13 @@
              xmlns:local="clr-namespace:Desafio"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/Button.xaml"/>
+                <ResourceDictionary Source="Resources/HeaderDataGrid.xaml"/>
+                <ResourceDictionary Source="Resources/TextBox.xaml"/>
+                <ResourceDictionary Source="Resources/DataGrid.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
