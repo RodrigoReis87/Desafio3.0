@@ -24,7 +24,7 @@ namespace Desafio.Models
             public double Valortotal { get; set; }
             public Cliente Cliente { get; set; }
             public EnderecoEntrega EnderecoEntrega { get; set; }
-            //public List<Iten> itens { get; set; }
+            public List<Item> Itens { get; set; }
             //public List<Pagamento> pagamento { get; set; }
       
         #endregion

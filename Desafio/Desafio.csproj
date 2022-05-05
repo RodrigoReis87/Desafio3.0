@@ -61,8 +61,10 @@
     </ApplicationDefinition>
     <Compile Include="Models\Cliente.cs" />
     <Compile Include="Models\EnderecoEntrega.cs" />
+    <Compile Include="Models\Item.cs" />
     <Compile Include="ViewModels\ClienteVM.cs" />
     <Compile Include="ViewModels\EnderecoVM.cs" />
+    <Compile Include="ViewModels\ItemVM.cs" />
     <Compile Include="ViewModels\PedidoVM.cs" />
     <Compile Include="ViewModels\PropertyChange.cs" />
     <Compile Include="ViewModels\UcPedidoVM.cs" />

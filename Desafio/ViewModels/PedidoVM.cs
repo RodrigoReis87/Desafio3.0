@@ -24,7 +24,7 @@ namespace Desafio.ViewModels
         public double Valortotal { get; set; }
         public Cliente Cliente { get; set; }
         public EnderecoEntrega EnderecoEntrega { get; set; }
-        // public List<Iten> itens { get; set; }
+        public List<Item> Itens { get; set; }
         // public List<Pagamento> pagamento { get; set; }        
 
         public void ConverterToVM(PedidoCompleto objeto)
@@ -64,6 +64,19 @@ namespace Desafio.ViewModels
                     Complemento = objeto.EnderecoEntrega.Complemento,
                     Referencia = objeto.EnderecoEntrega.Referencia
                 };
+
+                //objeto.Itens = new List<Item>();
+                    foreach(var item in objeto.Itens)
+                    {
+                    objeto.Itens.Add(new Item()
+                    {
+                        Id = objeto.Itens.First().Id,
+                        Idproduto = objeto.Itens.First().Idproduto,
+                        Nome = objeto.Itens.First().Nome,
+                        Quantidade = objeto.Itens.First().Quantidade,
+                        ValorUnitario = objeto.Itens.First().ValorUnitario
+                    });
+                    };                
             }
             catch (Exception)
             {
